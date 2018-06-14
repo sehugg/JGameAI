@@ -1,0 +1,38 @@
+apply plugin: 'java'
+
+tasks.withType(JavaCompile) { 
+    sourceCompatibility = "1.6"
+    targetCompatibility = "1.6" 
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+        resources {
+            srcDir 'src'
+        }
+    }
+    test {
+        java {
+            srcDir 'tests'
+        }
+        resources {
+            srcDir 'tests'
+        }
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+test { 
+     jvmArgs = ["-Xmx256M"]
+} 
+
